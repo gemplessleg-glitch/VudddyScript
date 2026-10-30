@@ -1,0 +1,36 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Name = "VudddyScript"
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+local frame = Instance.new("Frame")
+frame.Size = UDim2.fromOffset(220, 165)
+frame.Position = UDim2.new(0.5, -110, 0.35, 0)
+frame.BackgroundColor3 = Color3.fromRGB(30, 25, 45)
+frame.Active = true
+frame.Draggable = true
+frame.Parent = gui
+local function addButton(text, y, callback)
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(1, -16, 0, 32)
+    button.Position = UDim2.fromOffset(8, y)
+    button.Text = text
+    button.TextScaled = true
+    button.BackgroundColor3 = Color3.fromRGB(115, 75, 210)
+    button.TextColor3 = Color3.new(1, 1, 1)
+    button.Parent = frame
+    button.Activated:Connect(callback)
+end
+addButton("X Close", 6, function()
+    gui:Destroy()
+end)
+addButton("Scan House", 44, function()
+    print("Scan button pressed")
+end)
+addButton("Calculate Value", 82, function()
+    print("Calculate button pressed")
+end)
+addButton("Place House", 120, function()
+    print("Place button pressed")
+end)
